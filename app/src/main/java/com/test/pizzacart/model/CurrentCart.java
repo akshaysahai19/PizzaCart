@@ -2,24 +2,24 @@ package com.test.pizzacart.model;
 
 public class CurrentCart {
 
-    private String pizzaType;
+    private String title;
     private long quantity;
     private long price;
-    private long id;
+    private String Id;
 
-    public CurrentCart(String pizzaType, long quantity, long price, long id) {
-        this.pizzaType = pizzaType;
+    public CurrentCart(String title, long quantity, long price, String id) {
+        this.title = title;
         this.quantity = quantity;
         this.price = price;
-        this.id = id;
+        Id = id;
     }
 
-    public String getPizzaType() {
-        return pizzaType;
+    public String getTitle() {
+        return title;
     }
 
-    public void setPizzaType(String pizzaType) {
-        this.pizzaType = pizzaType;
+    public void setTitle(String title) {
+        this.title = title;
     }
 
     public long getQuantity() {
@@ -38,11 +38,11 @@ public class CurrentCart {
         this.price = price;
     }
 
-    public long getId() {
-        return id;
+    public String getId() {
+        return Id;
     }
 
-    public void setId(long id) {
-        this.id = id;
+    public void setId(String id) {
+        Id = id;
     }
 }

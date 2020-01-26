@@ -82,4 +82,8 @@ public class CrustRecyclerAdapter extends RecyclerView.Adapter<CrustRecyclerAdap
         this.selectedPos = selectedPos;
         notifyDataSetChanged();
     }
+
+    public int getSelectedPos() {
+        return selectedPos;
+    }
 }

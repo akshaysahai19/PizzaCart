@@ -64,13 +64,13 @@
                 android:layout_height="wrap_content" />
 
             <Button
+                android:id="@+id/done"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_margin="10dp"
                 android:background="@color/black"
-                android:text="Done"
-                android:id="@+id/done"
+                android:text="Add to cart"
                 android:textColor="@color/white" />
 
         </LinearLayout>

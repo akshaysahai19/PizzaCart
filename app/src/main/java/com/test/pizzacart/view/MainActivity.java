@@ -13,14 +13,21 @@ import android.view.View;
 import com.test.pizzacart.R;
 import com.test.pizzacart.databinding.ActivityMainBinding;
 import com.test.pizzacart.dialog.AddPizzaDialog;
+import com.test.pizzacart.model.CurrentCart;
 import com.test.pizzacart.model.PizzaInfo;
 import com.test.pizzacart.viewmodel.PizzaViewModel;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class MainActivity extends AppCompatActivity {
 
     ActivityMainBinding activityMainBinding;
     PizzaViewModel pizzaViewModel;
     public PizzaInfo pizzaInfo;
+    HashMap<String, CurrentCart> currentCartHashMap;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,6 +73,54 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    public void addPizza(String title, int i) {
+    public void addPizza(CurrentCart currentCart) {
+        updateMap(currentCart);
+        updateView();
     }
+
+
+
+    public void removePizza(CurrentCart currentCart) {
+        if (currentCartHashMap.containsKey(currentCart.getId())) {
+            if (currentCartHashMap.get(currentCart.getId()).getQuantity() > 1) {
+                currentCartHashMap.get(currentCart.getId())
+                        .setQuantity(currentCartHashMap.get(currentCart.getId()).getQuantity() - 1);
+            } else {
+                currentCartHashMap.remove(currentCart.getId());
+            }
+        }
+    }
+
+
+    private void updateView() {
+        activityMainBinding.done.setText("Total (" + getTotalQuantities() + " Pizzas) " + "₹" + getTotal());
+    }
+
+    private String getTotal() {
+        long total = 0;
+        for (Map.Entry<String, CurrentCart> entries
+                : currentCartHashMap.entrySet()) {
+            total += (entries.getValue().getPrice() * entries.getValue().getQuantity());
+        }
+        return String.valueOf(total);
+    }
+
+    private String getTotalQuantities() {
+        long quant = 0;
+        for (Map.Entry<String, CurrentCart> entries
+                : currentCartHashMap.entrySet()) {
+            quant += entries.getValue().getQuantity();
+        }
+        return String.valueOf(quant);
+    }
+
+    public void updateMap(CurrentCart currentCart) {
+        if (currentCartHashMap.containsKey(currentCart.getId())) {
+            currentCartHashMap.get(currentCart.getId())
+                    .setQuantity(currentCartHashMap.get(currentCart.getId()).getQuantity() + 1);
+        } else {
+            currentCartHashMap.put(currentCart.getId(), currentCart);
+        }
+    }
+
 }

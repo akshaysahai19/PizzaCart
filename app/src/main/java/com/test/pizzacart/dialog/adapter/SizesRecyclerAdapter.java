@@ -20,22 +20,12 @@ public class SizesRecyclerAdapter extends RecyclerView.Adapter<SizesRecyclerAdap
     private Context context;
     private List<Sizes> sizesList;
     private int selectedPos = 99;
-    private SizeSelectInterface sizeSelectInterface;
 
-    public SizesRecyclerAdapter(Context context, List<Sizes> sizesList, int selectedPos, SizeSelectInterface sizeSelectInterface) {
+    public SizesRecyclerAdapter(Context context, List<Sizes> sizesList, int selectedPos) {
         this.context = context;
         this.sizesList = sizesList;
         this.selectedPos = selectedPos;
-        this.sizeSelectInterface = sizeSelectInterface;
     }
-
-
-    public interface SizeSelectInterface {
-
-        void sizeSelect(int id);
-
-    }
-
 
     @NonNull
     @Override
@@ -58,7 +48,6 @@ public class SizesRecyclerAdapter extends RecyclerView.Adapter<SizesRecyclerAdap
             @Override
             public void onClick(View view) {
                 selectedPos = 99;
-                sizeSelectInterface.sizeSelect((int) sizesList.get(position).getId());
                 notifyDataSetChanged();
             }
         });
@@ -82,5 +71,9 @@ public class SizesRecyclerAdapter extends RecyclerView.Adapter<SizesRecyclerAdap
     public void setSelectedPos(int selectedPos) {
         this.selectedPos = selectedPos;
         notifyDataSetChanged();
+    }
+
+    public int getSelectedPos() {
+        return selectedPos;
     }
 }
