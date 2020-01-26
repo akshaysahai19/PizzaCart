@@ -17,24 +17,18 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class PizzaViewModel extends ViewModel {
 
-    //this is the data that we will fetch asynchronously
     private MutableLiveData<PizzaInfo> pizzaInfo;
     private String description = "";
     private String title = "";
 
-    //we will call this method to get the data
     public LiveData<PizzaInfo> getPizzas() {
-        //if the list is null
         pizzaInfo = new MutableLiveData<PizzaInfo>();
-        //we will load it asynchronously from server in this method
         loadPizzaApi();
 
-        //finally we will return the list
         return pizzaInfo;
     }
 
 
-    //This method is using Retrofit to get the JSON data from URL
     private void loadPizzaApi() {
         Gson gson = new GsonBuilder()
                 .setLenient()
@@ -55,7 +49,6 @@ public class PizzaViewModel extends ViewModel {
 
                 System.out.println("Call: " + call);
                 System.out.println("Response: " + response);
-                //finally we are setting the list to our MutableLiveData
                 pizzaInfo.setValue(response.body());
                 setDescription(pizzaInfo.getValue().getDescription());
                 setTitle(pizzaInfo.getValue().getName());
