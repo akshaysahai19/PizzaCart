@@ -23,7 +23,7 @@
             android:layout_gravity="center"
             android:gravity="center"
             android:padding="20dp"
-            android:text="Pizza Fam"
+            android:text="@string/pizza_fam"
             android:textColor="@color/black" />
 
         <LinearLayout
@@ -99,7 +99,7 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:background="@color/black"
-                            android:text="Remove"
+                            android:text="@string/remove"
                             android:textColor="@color/white" />
 
 
@@ -109,7 +109,7 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:background="@color/white"
-                            android:text="Add"
+                            android:text="@string/add"
                             android:textColor="@color/black" />
 
                     </LinearLayout>
@@ -131,7 +131,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:background="@color/black"
-                android:text="Edit"
+                android:text="@string/edit"
                 android:padding="10dp"
                 android:textSize="16sp"
                 android:textColor="@color/white" />

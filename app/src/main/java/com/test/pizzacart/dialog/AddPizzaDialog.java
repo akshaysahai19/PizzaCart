@@ -51,7 +51,7 @@ public class AddPizzaDialog extends Dialog implements CrustRecyclerAdapter.Crust
                         pizzaInfo.getCrusts().get(crustRecyclerAdapter.getSelectedPos() + 1).getSizes().get(sizesRecyclerAdapter.getSelectedPos() + 1).getId();
 
                 CurrentCart currentCart = new CurrentCart(name, 1, price, id);
-                ((MainActivity) context).addPizza(currentCart);
+                ((MainActivity) context).addPizzaUpdateMap(currentCart);
                 dismiss();
             }
         });

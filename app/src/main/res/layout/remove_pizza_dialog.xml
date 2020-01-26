@@ -20,7 +20,7 @@
                 android:layout_gravity="center"
                 android:gravity="center"
                 android:padding="20dp"
-                android:text="@string/customize_pizza"
+                android:text="@string/current_cart"
                 android:textColor="@color/black" />
 
             <View
@@ -29,17 +29,8 @@
                 android:layout_gravity="center"
                 android:background="@color/black" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center|start"
-                android:gravity="center"
-                android:padding="5dp"
-                android:text="@string/crust"
-                android:textColor="@color/black" />
-
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/crusts"
+                android:id="@+id/items"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
 
@@ -48,20 +39,6 @@
                 android:layout_height="0.5dp"
                 android:layout_gravity="center"
                 android:background="@color/black" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center|start"
-                android:gravity="center"
-                android:padding="5dp"
-                android:text="@string/size"
-                android:textColor="@color/black" />
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/sizes"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
 
             <Button
                 android:id="@+id/done"
@@ -70,8 +47,7 @@
                 android:layout_gravity="center"
                 android:layout_margin="10dp"
                 android:background="@color/black"
-                android:text="@string/add_to_cart"
-                android:padding="4dp"
+                android:text="@string/cancel"
                 android:textColor="@color/white" />
 
         </LinearLayout>

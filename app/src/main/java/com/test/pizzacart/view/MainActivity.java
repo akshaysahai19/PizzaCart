@@ -13,13 +13,12 @@ import android.view.View;
 import com.test.pizzacart.R;
 import com.test.pizzacart.databinding.ActivityMainBinding;
 import com.test.pizzacart.dialog.AddPizzaDialog;
+import com.test.pizzacart.dialog.RemovePizzaDialog;
 import com.test.pizzacart.model.CurrentCart;
 import com.test.pizzacart.model.PizzaInfo;
 import com.test.pizzacart.viewmodel.PizzaViewModel;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 public class MainActivity extends AppCompatActivity {
@@ -34,6 +33,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         activityMainBinding = DataBindingUtil.setContentView(this, R.layout.activity_main);
 
+        currentCartHashMap = new HashMap<>();
         pizzaViewModel = ViewModelProviders.of(this).get(PizzaViewModel.class);
         pizzaViewModel.getPizzas().observe(this, new Observer<PizzaInfo>() {
             @Override
@@ -67,33 +67,14 @@ public class MainActivity extends AppCompatActivity {
         activityMainBinding.remove.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                RemovePizzaDialog removePizzaDialog = new RemovePizzaDialog(MainActivity.this, currentCartHashMap);
+                removePizzaDialog.show();
             }
         });
     }
 
-
-    public void addPizza(CurrentCart currentCart) {
-        updateMap(currentCart);
-        updateView();
-    }
-
-
-
-    public void removePizza(CurrentCart currentCart) {
-        if (currentCartHashMap.containsKey(currentCart.getId())) {
-            if (currentCartHashMap.get(currentCart.getId()).getQuantity() > 1) {
-                currentCartHashMap.get(currentCart.getId())
-                        .setQuantity(currentCartHashMap.get(currentCart.getId()).getQuantity() - 1);
-            } else {
-                currentCartHashMap.remove(currentCart.getId());
-            }
-        }
-    }
-
-
     private void updateView() {
-        activityMainBinding.done.setText("Total (" + getTotalQuantities() + " Pizzas) " + "₹" + getTotal());
+        activityMainBinding.done.setText("Quantity (" + getTotalQuantities() + " Pizzas) : Total - " + "₹" + getTotal());
     }
 
     private String getTotal() {
@@ -114,13 +95,28 @@ public class MainActivity extends AppCompatActivity {
         return String.valueOf(quant);
     }
 
-    public void updateMap(CurrentCart currentCart) {
+    public void addPizzaUpdateMap(CurrentCart currentCart) {
         if (currentCartHashMap.containsKey(currentCart.getId())) {
             currentCartHashMap.get(currentCart.getId())
                     .setQuantity(currentCartHashMap.get(currentCart.getId()).getQuantity() + 1);
         } else {
             currentCartHashMap.put(currentCart.getId(), currentCart);
         }
+        updateView();
     }
+
+
+    public void removePizzaUpdateView(CurrentCart currentCart) {
+        if (currentCartHashMap.containsKey(currentCart.getId())) {
+            if (currentCartHashMap.get(currentCart.getId()).getQuantity() > 1) {
+                currentCartHashMap.get(currentCart.getId())
+                        .setQuantity(currentCartHashMap.get(currentCart.getId()).getQuantity() - 1);
+            } else {
+                currentCartHashMap.remove(currentCart.getId());
+            }
+        }
+        updateView();
+    }
+
 
 }

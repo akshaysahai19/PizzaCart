@@ -1,3 +1,16 @@
 <resources>
     <string name="app_name">Pizza Cart</string>
+    <string name="edit">Edit</string>
+    <string name="remove">Remove</string>
+    <string name="add">Add</string>
+    <string name="pizza_fam">Pizza Fam</string>
+    <string name="add_to_cart">Add to cart</string>
+    <string name="size">Size</string>
+    <string name="crust">Crust</string>
+    <string name="customize_pizza">Customize Pizza</string>
+    <string name="price_250">Price : 250</string>
+    <string name="quantity_10">Quantity : 10</string>
+    <string name="pizza_abc">Pizza ABC</string>
+    <string name="cancel">Cancel</string>
+    <string name="current_cart">Current Cart</string>
 </resources>
