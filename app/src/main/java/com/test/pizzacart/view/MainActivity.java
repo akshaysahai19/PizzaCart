@@ -1,4 +1,4 @@
-package com.test.pizzacart;
+package com.test.pizzacart.view;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -9,6 +9,7 @@ import androidx.lifecycle.ViewModelProviders;
 
 import android.os.Bundle;
 
+import com.test.pizzacart.R;
 import com.test.pizzacart.databinding.ActivityMainBinding;
 import com.test.pizzacart.model.PizzaInfo;
 import com.test.pizzacart.viewmodel.PizzaViewModel;
@@ -21,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        activityMainBinding = DataBindingUtil.setContentView(this,R.layout.activity_main);
+        activityMainBinding = DataBindingUtil.setContentView(this, R.layout.activity_main);
 
         pizzaViewModel = ViewModelProviders.of(this).get(PizzaViewModel.class);
         pizzaViewModel.getPizzas().observe(this, new Observer<PizzaInfo>() {
