@@ -58,6 +58,18 @@
                     android:text="@string/price_250"
                     android:textColor="@color/black" />
 
+                <TextView
+                    android:id="@+id/total"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:background="@android:color/transparent"
+                    android:gravity="center"
+                    android:padding="5dp"
+                    android:text="Total : 250"
+                    android:textColor="@color/black" />
+
 
             </LinearLayout>
 

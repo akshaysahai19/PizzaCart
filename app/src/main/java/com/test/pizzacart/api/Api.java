@@ -9,10 +9,10 @@ import retrofit2.http.Headers;
 
 public interface Api {
 
-    String BASE_URL = "https://ipsator-android-test.free.beeceptor.com/";
+    String BASE_URL = "https://api.myjson.com/bins/";
 
     @Headers("Content-Type: application/json")
-    @GET("pizzas")
+    @GET("11enle")
     Call<PizzaInfo> getPizzaInfo();
 
 }

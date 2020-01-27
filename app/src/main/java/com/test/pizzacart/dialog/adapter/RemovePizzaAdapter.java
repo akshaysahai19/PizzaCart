@@ -46,6 +46,7 @@ public class RemovePizzaAdapter extends RecyclerView.Adapter<RemovePizzaAdapter.
         holder.removeItemCardBinding.name.setText(currentCart.getTitle());
         holder.removeItemCardBinding.quant.setText("Quantity : " + currentCart.getQuantity());
         holder.removeItemCardBinding.price.setText("Price : ₹" + currentCart.getPrice());
+        holder.removeItemCardBinding.total.setText("Total : ₹" + (currentCart.getPrice()*currentCart.getQuantity()));
 
         holder.removeItemCardBinding.delete.setOnClickListener(new View.OnClickListener() {
             @Override

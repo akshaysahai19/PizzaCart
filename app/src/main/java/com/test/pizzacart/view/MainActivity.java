@@ -41,6 +41,13 @@ public class MainActivity extends AppCompatActivity {
         progressDialog.setMessage(getResources().getString(R.string.please_wait));
         progressDialog.show();
         currentCartHashMap = new HashMap<>();
+
+       viewModelCalls();
+
+        onClicks();
+    }
+
+    private void viewModelCalls() {
         pizzaViewModel = ViewModelProviders.of(this).get(PizzaViewModel.class);
         pizzaViewModel.getPizzas().observe(this, new Observer<PizzaInfo>() {
             @Override
@@ -61,8 +68,6 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
-
-        onClicks();
     }
 
     private void onClicks() {
@@ -101,6 +106,7 @@ public class MainActivity extends AppCompatActivity {
         activityMainBinding.done.setText("Quantity (" + getTotalQuantities() + " Pizza) : Total - " + "₹" + getTotal());
     }
 
+//    returns the total amount of pizzas in cart
     private String getTotal() {
         long total = 0;
         for (Map.Entry<String, CurrentCart> entries
@@ -110,6 +116,7 @@ public class MainActivity extends AppCompatActivity {
         return String.valueOf(total);
     }
 
+//    counts total number of pizzas present in cart
     private String getTotalQuantities() {
         long quant = 0;
         for (Map.Entry<String, CurrentCart> entries
@@ -124,6 +131,7 @@ public class MainActivity extends AppCompatActivity {
         return String.valueOf(quant);
     }
 
+//    updates the quantity of the pizza in cart by checking in hashmap
     public void addPizzaUpdateMap(CurrentCart currentCart) {
         if (currentCartHashMap.containsKey(currentCart.getId())) {
             currentCartHashMap.get(currentCart.getId())
@@ -135,6 +143,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
+    //    updates the quantity of the pizza in cart by checking in hashmap
     public void removePizzaUpdateView(CurrentCart currentCart) {
         if (currentCartHashMap.containsKey(currentCart.getId())) {
             if (currentCartHashMap.get(currentCart.getId()).getQuantity() > 1) {
