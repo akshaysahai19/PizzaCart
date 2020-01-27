@@ -7,6 +7,7 @@ import androidx.lifecycle.ViewModel;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.test.pizzacart.api.Api;
+import com.test.pizzacart.api.HttpClientService;
 import com.test.pizzacart.model.PizzaInfo;
 
 import retrofit2.Call;
@@ -18,8 +19,6 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class PizzaViewModel extends ViewModel {
 
     private MutableLiveData<PizzaInfo> pizzaInfo;
-    private String description = "";
-    private String title = "";
 
     public LiveData<PizzaInfo> getPizzas() {
         pizzaInfo = new MutableLiveData<PizzaInfo>();
@@ -34,7 +33,9 @@ public class PizzaViewModel extends ViewModel {
                 .setLenient()
                 .create();
 
+
         Retrofit retrofit = new Retrofit.Builder()
+                .client(HttpClientService.getUnsafeOkHttpClient())
                 .baseUrl(Api.BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create(gson))
                 .build();
@@ -50,8 +51,6 @@ public class PizzaViewModel extends ViewModel {
                 System.out.println("Call: " + call);
                 System.out.println("Response: " + response);
                 pizzaInfo.setValue(response.body());
-                setDescription(pizzaInfo.getValue().getDescription());
-                setTitle(pizzaInfo.getValue().getName());
 
             }
 
@@ -62,23 +61,6 @@ public class PizzaViewModel extends ViewModel {
         });
     }
 
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public String getDescription() {
-        return this.description;
-    }
-
-
-    public String getTitle() {
-        return this.title;
-    }
 
 
 }

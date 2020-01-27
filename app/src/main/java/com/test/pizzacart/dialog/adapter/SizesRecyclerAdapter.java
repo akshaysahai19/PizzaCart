@@ -38,7 +38,7 @@ public class SizesRecyclerAdapter extends RecyclerView.Adapter<SizesRecyclerAdap
     public void onBindViewHolder(@NonNull ViewHolder holder, final int position) {
         holder.itemLayoutBinding.price.setVisibility(View.VISIBLE);
         holder.itemLayoutBinding.title.setText(sizesList.get(position).getName());
-        holder.itemLayoutBinding.title.setText("₹" + sizesList.get(position).getPrice());
+        holder.itemLayoutBinding.price.setText("₹" + sizesList.get(position).getPrice());
         if (selectedPos == position) {
             holder.itemLayoutBinding.selected.setVisibility(View.VISIBLE);
         } else {
@@ -47,8 +47,7 @@ public class SizesRecyclerAdapter extends RecyclerView.Adapter<SizesRecyclerAdap
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                selectedPos = 99;
-                notifyDataSetChanged();
+                setSelectedPos(position);
             }
         });
     }

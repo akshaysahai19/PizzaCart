@@ -35,8 +35,8 @@ public class AddPizzaDialog extends Dialog implements CrustRecyclerAdapter.Crust
         this.context = context;
         this.pizzaInfo = pizzaInfo;
         setupCrusts();
-        setupSizes((int) pizzaInfo.getDefaultCrust(),
-                (int) pizzaInfo.getCrusts().get((int) pizzaInfo.getDefaultCrust()).getDefaultSize());
+        setupSizes((int) pizzaInfo.getDefaultCrust()-1,
+                (int) pizzaInfo.getCrusts().get((int) pizzaInfo.getDefaultCrust()-1).getDefaultSize()-1);
         onClick();
     }
 
@@ -44,11 +44,11 @@ public class AddPizzaDialog extends Dialog implements CrustRecyclerAdapter.Crust
         addPizzaDialogBinding.done.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String name = pizzaInfo.getCrusts().get(crustRecyclerAdapter.getSelectedPos() + 1).getName() + " - "
-                        + pizzaInfo.getCrusts().get(crustRecyclerAdapter.getSelectedPos() + 1).getSizes().get(sizesRecyclerAdapter.getSelectedPos() + 1).getName();
-                long price = pizzaInfo.getCrusts().get(crustRecyclerAdapter.getSelectedPos() + 1).getSizes().get(sizesRecyclerAdapter.getSelectedPos()).getPrice();
-                String id = pizzaInfo.getCrusts().get(crustRecyclerAdapter.getSelectedPos() + 1).getId() + "" +
-                        pizzaInfo.getCrusts().get(crustRecyclerAdapter.getSelectedPos() + 1).getSizes().get(sizesRecyclerAdapter.getSelectedPos() + 1).getId();
+                String name = pizzaInfo.getCrusts().get(crustRecyclerAdapter.getSelectedPos()).getName() + " - "
+                        + pizzaInfo.getCrusts().get(crustRecyclerAdapter.getSelectedPos()).getSizes().get(sizesRecyclerAdapter.getSelectedPos()).getName();
+                long price = pizzaInfo.getCrusts().get(crustRecyclerAdapter.getSelectedPos()).getSizes().get(sizesRecyclerAdapter.getSelectedPos()).getPrice();
+                String id = pizzaInfo.getCrusts().get(crustRecyclerAdapter.getSelectedPos()).getId() + "" +
+                        pizzaInfo.getCrusts().get(crustRecyclerAdapter.getSelectedPos()).getSizes().get(sizesRecyclerAdapter.getSelectedPos()).getId();
 
                 CurrentCart currentCart = new CurrentCart(name, 1, price, id);
                 ((MainActivity) context).addPizzaUpdateMap(currentCart);
@@ -60,7 +60,7 @@ public class AddPizzaDialog extends Dialog implements CrustRecyclerAdapter.Crust
     private void setupCrusts() {
         addPizzaDialogBinding.crusts.setLayoutManager(new LinearLayoutManager(context));
         crustRecyclerAdapter = new CrustRecyclerAdapter(context, pizzaInfo.getCrusts(),
-                (int) pizzaInfo.getDefaultCrust(), this);
+                (int) pizzaInfo.getDefaultCrust()-1, this);
         addPizzaDialogBinding.crusts.setAdapter(crustRecyclerAdapter);
     }
 
@@ -74,8 +74,8 @@ public class AddPizzaDialog extends Dialog implements CrustRecyclerAdapter.Crust
 
     @Override
     public void crustSelect(int id) {
-        setupSizes(id,
-                (int) pizzaInfo.getCrusts().get(id).getDefaultSize());
+        setupSizes(id-1,
+                (int) pizzaInfo.getCrusts().get(id-1).getDefaultSize()-1);
     }
 
 }

@@ -51,11 +51,11 @@ public class RemovePizzaAdapter extends RecyclerView.Adapter<RemovePizzaAdapter.
             @Override
             public void onClick(View view) {
                 if (currentCart.getQuantity() > 0) {
-                    ((MainActivity) context).removePizzaUpdateView(currentCart);
-                    holder.removeItemCardBinding.quant.setText("Quantity : " + (currentCart.getQuantity() - 1));
+                    removePizzaInterface.updateRemove(currentCart);
+//                    holder.removeItemCardBinding.quant.setText("Quantity : " + (currentCart.getQuantity()));
                 } else {
                     removePizzaInterface.updateRemove(currentCart);
-                    notifyDataSetChanged();
+//                    holder.removeItemCardBinding.quant.setText("Quantity : " + (0));
                 }
             }
         });

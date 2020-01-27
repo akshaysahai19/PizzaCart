@@ -13,4 +13,7 @@
     <string name="pizza_abc">Pizza ABC</string>
     <string name="cancel">Cancel</string>
     <string name="current_cart">Current Cart</string>
+    <string name="removed">Pizza removed from your cart.</string>
+    <string name="thank_you">Thank you for ordering.</string>
+    <string name="please_wait">Please wait</string>
 </resources>

@@ -56,9 +56,8 @@ public class CrustRecyclerAdapter extends RecyclerView.Adapter<CrustRecyclerAdap
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                selectedPos = 99;
                 crustSelectInterface.crustSelect((int)crustsList.get(position).getId());
-                notifyDataSetChanged();
+                setSelectedPos(position);
             }
         });
     }

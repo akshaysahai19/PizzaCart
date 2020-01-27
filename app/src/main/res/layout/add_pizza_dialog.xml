@@ -7,15 +7,19 @@
         android:layout_height="wrap_content"
         android:layout_margin="2dp"
         app:cardCornerRadius="6dp"
+        android:minHeight="280dp"
+        android:minWidth="380dp"
         app:cardElevation="2dp">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:minHeight="280dp"
+            android:minWidth="380dp"
             android:orientation="vertical">
 
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:gravity="center"
@@ -30,7 +34,7 @@
                 android:background="@color/black" />
 
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center|start"
                 android:gravity="center"
@@ -50,7 +54,7 @@
                 android:background="@color/black" />
 
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center|start"
                 android:gravity="center"
@@ -61,7 +65,8 @@
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/sizes"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:minWidth="280dp"/>
 
             <Button
                 android:id="@+id/done"
